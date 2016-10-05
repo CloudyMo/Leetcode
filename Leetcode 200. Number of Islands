@@ -9,6 +9,8 @@ Example 1:
 
 ##################
 
+###This is a DFS method###
+
 class Solution(object):
     
     def changeIntoWater(self, grid, r, c):
