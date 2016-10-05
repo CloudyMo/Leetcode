@@ -1,0 +1,11 @@
+Your task is to calculate ab mod 1337 where a is a positive integer and b is an extremely large positive integer given in the form of an array.
+
+###############
+这里解释很好：
+https://discuss.leetcode.com/topic/50586/math-solusion-based-on-euler-s-theorem-power-called-only-once-c-java-1-line-python
+但还没有完全搞懂！！
+
+###############
+欧拉定理：
+https://en.wikipedia.org/wiki/Euler%27s_theorem
+也没有完全搞懂！！
