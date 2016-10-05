@@ -1,0 +1,40 @@
+Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+
+Example 1:
+
+11110
+11010
+11000
+00000
+
+##################
+
+class Solution(object):
+    
+    def changeIntoWater(self, grid, r, c):
+        grid[r][c] = 0
+        if r > 0 and grid[r - 1][c] == '1':self.changeIntoWater(grid, r - 1, c)
+        if r < len(grid) - 1 and grid[r + 1][c] == '1':self.changeIntoWater(grid, r + 1, c)
+        if c > 0 and grid[r][c - 1] == '1':self.changeIntoWater(grid, r, c - 1)
+        if c < len(grid[0]) - 1 and grid[r][c + 1] == '1':self.changeIntoWater(grid, r, c + 1)
+
+    def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        
+        ret = 0
+        if len(grid) == 0:
+            return 0
+            
+        for r in xrange(len(grid)):
+            for c in xrange(len(grid[0])):
+                if grid[r][c] == '1':
+                    ret += 1
+                    self.changeIntoWater(grid, r, c)
+                    
+        return ret
+            
+
+        
