@@ -1,0 +1,37 @@
+There are N gas stations along a circular route, where the amount of gas at station i is gas[i].
+
+You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from station i to its next station (i+1). You begin the journey with an empty tank at one of the gas stations.
+
+Return the starting gas station's index if you can travel around the circuit once, otherwise return -1.
+
+Note:
+The solution is guaranteed to be unique.
+
+##################
+###问题定义很重要###
+##################
+
+class Solution(object):
+    def canCompleteCircuit(self, gas, cost):
+        """
+        :type gas: List[int]
+        :type cost: List[int]
+        :rtype: int
+        """
+        ## sum(gas) < sum(cost)肯定无解
+        if sum(gas) < sum(cost):
+            return -1
+            
+        ##下面是肯定有解的情况##
+        ##开始的地方
+        pos = 0
+        ##定义到达此位置的平衡情况
+        balance = 0
+        for i in xrange(len(gas)):
+            ##如果到达此位置是有损耗的话，那么需要从下面一个位置出发
+            ##因为肯定有解的情况下，需要先从有收益的地方开始
+            balance += gas[i] - cost[i]
+            if balance < 0:
+                balance = 0
+                pos = i + 1
+        return pos
